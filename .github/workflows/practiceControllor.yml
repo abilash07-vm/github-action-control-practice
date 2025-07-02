@@ -9,7 +9,7 @@ jobs:
         id: fail-test
         run: exit 1
       - name: run test even if fail
-        if: failure() 
+        if: always() 
         run: |
           echo "This step will run even if the previous step fails"
           echo "Step ID: ${{ steps.fail-test.id }}"
