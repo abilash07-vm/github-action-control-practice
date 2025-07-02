@@ -6,7 +6,12 @@ jobs:
     steps:
       - name: fail test
         continue-on-error: true
+        id: fail-test
         run: exit 1
       - name: run test even if fail
         if: failure() 
-        run: echo "This step will run even if the previous step fails"
+        run: |
+          echo "This step will run even if the previous step fails"
+          echo "Step ID: ${{ steps.fail-test.id }}"
+          echo "Step Status: ${{ steps.fail-test.outcome }}"
+          echo "Step Conclusion: ${{ steps.fail-test.conclusion }}"
