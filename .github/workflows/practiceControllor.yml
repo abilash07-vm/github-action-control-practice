@@ -4,5 +4,5 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
-      - name: echo
-        run: echo "Hello"
+      - name: fail test
+        run: exit 1
