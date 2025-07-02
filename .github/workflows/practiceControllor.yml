@@ -5,7 +5,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: fail test
+        continue-on-error: true
         run: exit 1
       - name: run test even if fail
-        if: always() 
+        if: failure() 
         run: echo "This step will run even if the previous step fails"
