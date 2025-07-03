@@ -4,8 +4,8 @@ jobs:
   job1:
     strategy:
       matrix:
-        node-version: [14, 16, 18]
-        print-val: [1, 2, 3]
+        node-version: [14, 16]
+        print-val: [1, 2]
     runs-on: ${{matrix.node-version}}
     steps:
       - name: fail test
