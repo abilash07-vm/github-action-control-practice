@@ -2,7 +2,11 @@ name: Practice Control
 on: push
 jobs:
   job1:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14, 16, 18]
+        print-val: [1, 2, 3]
+    runs-on: ${{matrix.node-version}}
     steps:
       - name: fail test
         continue-on-error: true
@@ -15,3 +19,4 @@ jobs:
           echo "Step ID: ${{ steps.fail-test.id }}"
           echo "Step Status: ${{ steps.fail-test.outcome }}"
           echo "Step Conclusion: ${{ steps.fail-test.conclusion }}"
+          echo "${{matrix.print-val}}"
